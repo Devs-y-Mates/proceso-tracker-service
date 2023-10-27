@@ -1,0 +1,24 @@
+{
+	"info": {
+		"_postman_id": "31e3fff9-d35b-47eb-be67-2470e59be1e1",
+		"name": "proceso-tracker-service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4404886"
+	},
+	"item": [
+		{
+			"name": "ping",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}",
+					"host": [
+						"{{url}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
