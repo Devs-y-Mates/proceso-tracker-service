@@ -21,3 +21,5 @@ deploy/samconfig.toml
 .cache
 
 .env
+
+.npm/_logs/*.log
