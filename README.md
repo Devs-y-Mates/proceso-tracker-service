@@ -7,10 +7,10 @@
     <img src="assets/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-<h3 align="center">Match Schedule</h3>
+<h3 align="center">Proceso Tracker</h3>
 
   <p align="center">
-    App to organize matches and notify changes
+    Job Application Tracking App 
     <br />
     <a href="https://github.com/Devs-y-Mates/proceso-tracker-service"><strong>Explore the docs »</strong></a>
     <br />
