@@ -18,7 +18,10 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "postinstall": "yarn husky install"
+    "postinstall": "yarn husky install",
+    "start:dev:clean:solution": "docker compose up --build -V -d",
+    "start:dev:solution": "docker compose up -d",
+    "down:dev:solution": "docker compose down"
   },
   "dependencies": {
     "@fastify/static": "^6.12.0",
