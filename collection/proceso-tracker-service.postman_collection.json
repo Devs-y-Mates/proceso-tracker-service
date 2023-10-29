@@ -12,9 +12,29 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{url}}",
+					"raw": "{{url}}/ping",
 					"host": [
 						"{{url}}"
+					],
+					"path": [
+						"ping"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "swagger",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/documentation",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"documentation"
 					]
 				}
 			},
