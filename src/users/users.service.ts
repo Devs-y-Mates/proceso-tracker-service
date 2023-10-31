@@ -5,8 +5,9 @@ import { v4 as uuid } from 'uuid';
 import { Model } from 'mongoose';
 import { Users, UsersDocument } from './schema';
 import { TokenService } from '../token/token.service';
+import { Tokens } from '../token/types';
 
-type UserCreateResponse = Users;
+interface UserCreateResponse extends Users, Tokens {}
 
 @Injectable()
 export class UsersService {
