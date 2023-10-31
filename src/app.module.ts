@@ -5,6 +5,7 @@ import { PingController } from './ping.controller';
 import { UsersModule } from './users/users.module';
 import { TokenModule } from './token/token.module';
 import { AuthModule } from './auth/auth.module';
+import { CompaniesModule } from './companies/companies.module';
 
 const configService = new ConfigService();
 @Module({
@@ -19,6 +20,7 @@ const configService = new ConfigService();
     UsersModule,
     TokenModule,
     AuthModule,
+    CompaniesModule,
   ],
   controllers: [PingController],
   providers: [],
