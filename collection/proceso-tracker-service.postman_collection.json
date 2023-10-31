@@ -7,6 +7,408 @@
 	},
 	"item": [
 		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "signup",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (pm.info.requestName === 'signup') {",
+									"    if (pm.response.code === 200) {",
+									"        var responseBody = pm.response.json();",
+									"        var token = responseBody.access_token; ",
+									"        var refresh_token = responseBody.refresh_token;",
+									"        pm.environment.set('token', token);",
+									"        pm.environment.set('refresh_token', refresh_token);",
+									"    }",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"alejobianchi@gmail.com\",\n    \"password\": \"1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/v1/api/auth/local/signup",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"api",
+								"auth",
+								"local",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "signin",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (pm.info.requestName === 'signin') {",
+									"    if (pm.response.code === 200) {",
+									"        var responseBody = pm.response.json();",
+									"        var token = responseBody.access_token; ",
+									"        var refresh_token = responseBody.refresh_token;",
+									"        pm.environment.set('token', token);",
+									"        pm.environment.set('refresh_token', refresh_token);",
+									"    }",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"alejobianchi@gmail.com\",\n    \"password\": \"1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/v1/api/auth/local/signin",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"api",
+								"auth",
+								"local",
+								"signin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyYTM5YTFhZC0zOWEwLTQ5YjMtYWU0MC03MjhhZWEzODNjZGMiLCJlbWFpbCI6ImFsZWpvYmlhbmNoaUBnbWFpbC5jb20iLCJpYXQiOjE2OTg3NjAyMDUsImV4cCI6MTY5ODc2MTEwNX0.SdHfdWab3bhlPzzEd8eP6ogVfJ3ohKK5DBSiE1yb68g",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/v1/api/auth/logout",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"api",
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "refresh",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{refresh_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/v1/api/auth/refresh",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"api",
+								"auth",
+								"refresh"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "verify",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/v1/api/auth/local/verify/2a39a1ad-39a0-49b3-ae40-728aea383cdc/3604",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"api",
+								"auth",
+								"local",
+								"verify",
+								"2a39a1ad-39a0-49b3-ae40-728aea383cdc",
+								"3604"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "campanies",
+			"item": [
+				{
+					"name": "get all",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/v1/api/companies",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"api",
+								"companies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/v1/api/companies/654119d5b447754995c57b8d",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"api",
+								"companies",
+								"654119d5b447754995c57b8d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Fake company\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/v1/api/companies",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"api",
+								"companies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Fake company 1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/v1/api/companies/654119d5b447754995c57b8d",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"api",
+								"companies",
+								"654119d5b447754995c57b8d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/v1/api/companies/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"api",
+								"companies",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "ping",
 			"request": {
 				"method": "GET",
