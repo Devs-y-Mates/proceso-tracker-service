@@ -4,7 +4,6 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { PingController } from './ping.controller';
 import { UsersModule } from './users/users.module';
 import { TokenModule } from './token/token.module';
-import { EmailModule } from './email/email.module';
 
 const configService = new ConfigService();
 @Module({
@@ -18,7 +17,6 @@ const configService = new ConfigService();
     ),
     UsersModule,
     TokenModule,
-    EmailModule,
   ],
   controllers: [PingController],
   providers: [],

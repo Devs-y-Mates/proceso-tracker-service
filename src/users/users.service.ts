@@ -5,7 +5,6 @@ import { v4 as uuid } from 'uuid';
 import { Model } from 'mongoose';
 import { Users, UsersDocument } from './schema';
 import { TokenService } from '../token/token.service';
-import { EmailService } from '../email/email.service';
 
 type UserCreateResponse = Users;
 
@@ -13,7 +12,6 @@ type UserCreateResponse = Users;
 export class UsersService {
   constructor(
     private readonly tokenService: TokenService,
-    private readonly emailService: EmailService,
     @InjectModel(Users.name) private readonly usersModel: Model<UsersDocument>,
   ) {}
 
@@ -40,9 +38,6 @@ export class UsersService {
         confirm_code,
         created_at: new Date().toISOString(),
       });
-
-      // TODO: revisar el envio de email
-      await this.emailService.sendUserConfirmation(confirm_code, email, '2345');
 
       return {
         ...tokens,
